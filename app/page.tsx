@@ -1,17 +1,28 @@
+import { TopChrome, BottomChrome } from "@/components/Chrome";
+import { Hero } from "@/components/Hero";
+import { Form } from "@/components/Form";
+
 export default function Home() {
   return (
-    <main className="black-noise film-grain min-h-screen flex flex-col">
-      <div className="flex-1 flex flex-col justify-center px-8 md:px-16 py-16 max-w-4xl">
-        <h1 className="display text-[12vw] md:text-[160px] leading-[0.86] mb-4">
-          TONIGHT
-        </h1>
-        <p className="italic-glow text-[8vw] md:text-[96px]">
-          is yours<span className="punct">.</span>
+    <main className="black-noise film-grain min-h-screen relative overflow-hidden">
+      <TopChrome />
+
+      <div className="relative z-10 flex flex-col px-6 md:px-12 lg:px-20 pt-32 pb-32 max-w-6xl">
+        <Hero />
+
+        <p className="mt-16 text-white-70 text-lg md:text-xl max-w-xl leading-relaxed">
+          Events are weekly. Cafes are <em className="italic-glow not-italic">daily.</em>{" "}
+          <em className="italic-glow not-italic">Both.</em>
         </p>
+
+        <div className="mono text-[10px] text-white-32 mt-12">
+          MUMBAI · NAGPUR · PUNE
+        </div>
+
+        <Form />
       </div>
-      <footer className="px-8 md:px-16 py-8 mono text-[10px]">
-        HYPEHAUS  ·  COMING SOON
-      </footer>
+
+      <BottomChrome />
     </main>
   );
 }

@@ -31,7 +31,7 @@
 
 html, body {
   background: var(--color-ink);
-  color: var(--co-white);
+  color: var(--color-white);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -68,7 +68,6 @@ html, body {
   font-weight: 600;
   letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: var(--color-white-32);
 }
 
 /* === Black-noise gradient (per MASTER.md §1) === */
