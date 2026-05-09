@@ -67,16 +67,15 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    sendWelcomeEmail(entry.email, city)
-      .then(async () => {
-        await prisma.waitlist.update({
-          where: { id: entry.id },
-          data: { emailSentAt: new Date() },
-        });
-      })
-      .catch((err) => {
-        console.error("[waitlist] welcome email failed:", err);
+    try {
+      await sendWelcomeEmail(entry.email, city);
+      await prisma.waitlist.update({
+        where: { id: entry.id },
+        data: { emailSentAt: new Date() },
       });
+    } catch (err) {
+      console.error("[waitlist] welcome email failed:", err, "for", entry.email);
+    }
 
     return NextResponse.json({ ok: true }, { status: 201 });
   } catch (err) {
