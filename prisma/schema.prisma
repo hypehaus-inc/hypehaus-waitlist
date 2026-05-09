@@ -1,0 +1,46 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Waitlist {
+  id              String    @id @default(cuid())
+  email           String    @unique
+  city            City
+  role            Role
+  phone           String?
+  instagramHandle String?
+  sourceHandle    String?
+  region          Region    @default(IN)
+  signedUpAt      DateTime  @default(now())
+  emailSentAt     DateTime?
+  ipHash          String?
+  userAgent       String?
+
+  @@index([email])
+  @@index([city])
+  @@index([role])
+  @@index([signedUpAt])
+}
+
+enum City {
+  MUMBAI
+  NAGPUR
+  PUNE
+  OTHER
+}
+
+enum Role {
+  CONSUMER
+  VENDOR
+  BRAND
+}
+
+enum Region {
+  IN
+  US
+}
